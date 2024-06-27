@@ -1,3 +1,29 @@
-[gd_scene format=3 uid="uid://dw7qp0dubx0xe"]
+[gd_scene load_steps=4 format=3 uid="uid://dw7qp0dubx0xe"]
+
+[ext_resource type="Script" path="res://Scenes/Map.gd" id="1_eqafh"]
+[ext_resource type="PackedScene" uid="uid://b0pl811vynw8p" path="res://Prefabs/player.tscn" id="1_j22gp"]
+[ext_resource type="TileSet" uid="uid://ia37j236fxqv" path="res://TileSets/White.tres" id="3_g2n7y"]
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Map" type="Node2D" parent="."]
+script = ExtResource("1_eqafh")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_j22gp")]
+position = Vector2(959, 541)
+
+[node name="White" type="TileMap" parent="."]
+tile_set = ExtResource("3_g2n7y")
+format = 2
