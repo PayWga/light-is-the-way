@@ -1,14 +1,16 @@
 extends Node2D
 
-var DashCooldown: int
+@export var DashCooldown: int
 var DashRange: int
 var DashInvulnerabilityTime: int
 var DashDamage: int
+var IsOnCooldown = false
+@onready var CooldownTimer = self.get_child(0)
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	CooldownTimer.wait_time = DashCooldown
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -17,4 +19,16 @@ func _process(delta):
 
 
 func Dash():
-	pass
+	if IsOnCooldown:
+		pass
+	else:
+		CooldownStart()
+
+
+func CooldownStart():
+	IsOnCooldown = true
+	CooldownTimer.start()
+
+
+func _on_dash_timer_timeout():
+	IsOnCooldown = false
