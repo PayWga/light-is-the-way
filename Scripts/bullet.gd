@@ -1,6 +1,7 @@
 extends Area2D
 
-const SPEED = 800.0
+var SPEED = 0
+var DAMAGE = 0
 
 
 func _physics_process(delta):
@@ -10,3 +11,10 @@ func _physics_process(delta):
 
 func _on_visible_on_screen_notifier_2d_screen_exited():
 	queue_free()
+
+
+func setProjectileSpeed(ProjectileSpeed):
+	SPEED = ProjectileSpeed
+
+func setProjectileDamage(ProjectileDamage):
+	DAMAGE = ProjectileDamage
